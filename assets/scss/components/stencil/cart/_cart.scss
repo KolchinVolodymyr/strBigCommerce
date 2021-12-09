@@ -560,9 +560,13 @@ $card-preview-zoom-bottom-offset:       6rem;
 .previewCartList {
     @include u-listReset;
     border-collapse: collapse;
-    display: table;
+    display: block;
     table-layout: fixed;
     width: 100%;
+    .form-increment {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .previewCartItem {
@@ -664,7 +668,11 @@ $card-preview-zoom-bottom-offset:       6rem;
 .previewCartAction-checkout {
     padding-right: spacing("quarter");
 }
-
+.CartAction__btn {
+    padding-bottom: spacing("quarter");
+    padding-right: spacing("half");
+    padding-left: spacing("half");
+}
 .previewCartAction-checkoutMultiple {
     clear: both;
     padding-left: spacing("half");
