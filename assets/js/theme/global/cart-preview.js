@@ -113,31 +113,8 @@ export default function (secureBaseUrl, cartId) {
                 const itemId = element.getAttribute('data-cart-itemid');
                 const $el = $(`#qty-${itemId}`);
                 const oldQty = parseInt($el.val(), 10);
-                const newQty = element.dataset.action === 'inc' ? oldQty + 1 : oldQty - 1;
-                utils.api.cart.itemUpdate(itemId, newQty,(err, response) => {
-                    if (response.data.status !== 'succeed') {
-                        swal.fire({
-                            text: response.data.errors.join('\n'),
-                            icon: 'error',
-                        });
-                    }
-                });
+                $el.val(element.dataset.action === 'inc' ? oldQty + 1 : oldQty - 1);
 
-                const options = {
-                    template: 'common/cart-preview',
-                };
-                $cartDropdown
-                    .addClass(loadingClass)
-                    .html($cartLoading);
-                $cartLoading
-                    .show();
-                utils.api.cart.getContent(options, (err, response) => {
-                    $cartDropdown
-                        .removeClass(loadingClass)
-                        .html(response);
-                    $cartLoading
-                        .hide();
-                });
             };
         })
 
@@ -181,6 +158,41 @@ export default function (secureBaseUrl, cartId) {
                 });
             })
         })
+        if(event.target === $('#update-cart')[0]) {
+            const cartQtyInput = document.querySelectorAll('.previewCartList .cart-item-qty-input');
+            let items = [];
+            for (const i of cartQtyInput) {
+                let line = {
+                        id: i.dataset.cartItemid,
+                        quantity: i.value,
+                    }
+                items.push(line);
+            }
+            utils.api.cart.itemUpdate(items, (err, response) => {
+                if (response.data.status !== 'succeed') {
+                    swal.fire({
+                        text: response.data.errors.join('\n'),
+                        icon: 'error',
+                    });
+                }
+            })
+             const options = {
+                 template: 'common/cart-preview',
+             };
+             $cartDropdown
+                 .addClass(loadingClass)
+                 .html($cartLoading);
+             $cartLoading
+                 .show();
+             utils.api.cart.getContent(options, (err, response) => {
+                 $cartDropdown
+                     .removeClass(loadingClass)
+                     .html(response);
+                 $cartLoading
+                     .hide();
+             });
+
+        }
 
     })
 }

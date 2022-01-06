@@ -31,7 +31,8 @@
                         {{/if}}
                     {{/if}}
                 </div>
-
+                <button id="order-details-products" data-id={{this.id}} class="button button--primary">Order details</button>
+                <div id={{this.id}} class="container-metadata"></div>
                 <h5 class="account-product-title">
                     <a href="{{this.details_url}}">{{lang 'account.orders.list.order_number' number=this.id}}</a>
                 </h5>

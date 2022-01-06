@@ -27,7 +27,19 @@
 
 // Account list
 // -----------------------------------------------------------------------------
-
+.product-item {
+    border: container("border");
+    margin-bottom: 10px;
+    padding: 0 spacing("third");
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+.product-options {
+    color: stencilColor("color-textSecondary");
+    font-family: fontFamily("sans");
+    font-size: fontSize("tiny");
+}
 .account-list {
     list-style: none;
     margin-left: 0;

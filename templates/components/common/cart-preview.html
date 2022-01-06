@@ -84,6 +84,9 @@
                 {{/each}}
             </ul>
             <div class="previewCartAction">
+                <div class="CartAction__btn">
+                    <button id="update-cart" class="button button--small button--primary">Update cart</button>
+                </div>
                 {{#if cart.show_primary_checkout_button}}
                     <div class="previewCartAction-checkout">
                         <a href="{{urls.checkout.single_address}}" class="button button--small button--primary">

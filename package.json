@@ -11,6 +11,7 @@
     "@bigcommerce/stencil-utils": "^6.8.1",
     "core-js": "^3.9.0",
     "creditcards": "^3.0.1",
+    "detect-browser": "^5.3.0",
     "easyzoom": "^2.5.3",
     "focus-trap": "^6.3.0",
     "focus-within-polyfill": "^5.1.0",
