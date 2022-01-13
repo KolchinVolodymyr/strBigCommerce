@@ -523,3 +523,6 @@
 .navPages-item-hover:hover #navPage-subMenu-brand{
     display: flex;
 }
+[aria-label='Custom order form'] {
+    display: none;
+}

@@ -14,7 +14,6 @@ export default class OrderBulkProductsRow extends React.Component {
     }
 
     handleChange(e) {
-        console.log('this.stock',this.stock)
         const $input = $(e.target);
         const inputValue =  e.target.value.replace(/[^0-9]/g, "");
         this.setState({ inputValue });
@@ -75,6 +74,7 @@ export default class OrderBulkProductsRow extends React.Component {
                             type='number'
                             className='qtyField'
                             pattern='[0-9]{0,5}'
+                            data-sku={this.props.product.sku}
                             onInput={this.handleChange.bind(this)}
                             value={this.state.inputValue}/>}
                 </div>

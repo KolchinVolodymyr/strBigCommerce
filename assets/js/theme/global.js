@@ -16,9 +16,23 @@ import carousel from './common/carousel';
 import loadingProgressBar from './global/loading-progress-bar';
 import svgInjector from './global/svg-injector';
 import Brand from './custom/brandMenuItem';
+import initApolloClient from './global/graphql/client';
+import customerData from './custom/gql/customerData.gql';
 
 export default class Global extends PageManager {
+    constructor(context) {
+        super(context);
+        this.gqlClient = initApolloClient(this.context.storefrontAPIToken);
+    }
     onReady() {
+        this.gqlClient.query({
+            query: customerData,
+        }).then(response => {
+            if(response.data.customer !== null) {
+                //when adding the show() method, an "inline block" is added to the element, which distorts styles
+                $("[aria-label='Custom order form']").css('display', 'block');
+            }
+        })
         const {
             channelId, cartId, productId, categoryId, secureBaseUrl, maintenanceModeSettings, adminBarLanguage, showAdminBar,
         } = this.context;

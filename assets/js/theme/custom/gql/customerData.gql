@@ -3,12 +3,52 @@ query customerData {
     firstName
     entityId
     attributes {
-      productBulkOrderList: attribute(entityId: 1) {
+      productBulkOrderList1: attribute(entityId: 1) {
         entityId
         value
         name
       }
-      showPage: attribute(entityId: 2) {
+      showPage1: attribute(entityId: 2) {
+        entityId
+        value
+        name
+      }
+      productBulkOrderList2: attribute(entityId: 3) {
+        entityId
+        value
+        name
+      }
+      showPage2: attribute(entityId: 4) {
+        entityId
+        value
+        name
+      }
+      productBulkOrderList3: attribute(entityId: 5) {
+        entityId
+        value
+        name
+      }
+      showPage3: attribute(entityId: 6) {
+        entityId
+        value
+        name
+      }
+      productBulkOrderList4: attribute(entityId: 7) {
+        entityId
+        value
+        name
+      }
+      showPage4: attribute(entityId: 8) {
+        entityId
+        value
+        name
+      }
+      productBulkOrderList5: attribute(entityId: 9) {
+        entityId
+        value
+        name
+      }
+      showPage5: attribute(entityId: 10) {
         entityId
         value
         name

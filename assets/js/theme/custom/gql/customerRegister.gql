@@ -1,0 +1,6 @@
+query customerData {
+  customer {
+    firstName
+    entityId
+  }
+}

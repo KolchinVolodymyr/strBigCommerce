@@ -23,6 +23,27 @@ query getProductsSku(
         defaultImage {
           url(width: 100)
         }
+        variants{
+                  edges{
+                    node{
+                      id
+                      entityId
+                      sku
+                      productOptions{
+                        edges{
+                          node {
+                            entityId
+                            displayName
+                            isRequired
+                            ... on CheckboxOption {
+                                checkedByDefault
+                            }
+                          }
+                      }
+                    }
+                 }
+              }
+          }
       }
     }
 }
