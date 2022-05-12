@@ -435,6 +435,40 @@
         width: auto;
     }
 }
+.order-bulk-product-header {
+    display: none;
+    font: 0.9em sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.product-name-fixture-desc {
+    width: 14%;
+    text-align: center;
+}
+.product-name-fixture-photo, .product-name-product-photo {
+    width: 12%;
+    text-align: center;
+}
+.product-name-product-information {
+    width: 32%;
+    text-align: center;
+}
+.product-name-information {
+    width: 9%;
+    text-align: center;
+}
+.product-inventory {
+    width: 10%;
+    text-align: center;
+}
+.product-name-unit-price {
+    width: 7%;
+    text-align: center;
+}
+.product-name-qty {
+    width: 13%;
+    text-align: center;
+}
 .order-bulk-product {
     display: block;
     margin-bottom: 30px;
@@ -476,6 +510,9 @@
 }
 //*//
 @include breakpoint("medium") {
+    .order-bulk-product-header {
+        display: flex;
+    }
     .order-bulk-product {
         display: flex;
         .product-name {

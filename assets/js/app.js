@@ -56,6 +56,8 @@ const customClasses = {
     'pages/custom/page/bulk-order': () => import('./theme/custom/bulk-order'),
     'pages/custom/page/request-order': () => import('./theme/custom/request-order'),
     'pages/product': () => import('./theme/custom/brand-information-block'),
+    'pages/custom/page/bulk-order-hosted-csv': () => import('./theme/custom/bulk-order-hosted-csv'),
+    'pages/custom/category/category-order-hosted-csv': () => import('./theme/custom/category-order-hosted-csv'),
 };
 
 /**

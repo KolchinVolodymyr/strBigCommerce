@@ -32,10 +32,20 @@ export default class OrderBulkProductsTable extends React.Component {
     render() {
         return (
             <div className="containerDetailProduct">
+                <div className='order-bulk-product-header'>
+                    <div className='product-name-fixture-desc'>Fixture Desc</div> 
+                    <div className='product-name-fixture-photo'>Fixture Photo</div> 
+                    <div className='product-name-product-photo'>Product Photo</div>
+                    <div className='product-name-product-information'>Product Information</div>
+                    <div className='product-name-information'>Inventory</div>
+                    <div className='product-name-unit-price'>Unit Price</div>
+                    <div className='product-name-qty'>Qty</div>    
+                </div>
                 {this.props.productsList.map((el) => {
                     return (<OrderBulkProductsRow
-                        key={el.id}
-                        product={el}
+                        key={el.product.id}
+                        product={el.product}
+                        urlImagesFixed={el.urlImagesFixed}
                         changeTotal={this.changeTotal.bind(this)}
                     /> )
                 })

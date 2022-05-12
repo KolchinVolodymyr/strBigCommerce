@@ -14,7 +14,6 @@ export default class OrderBulkProductsRow extends React.Component {
     }
 
     handleChange(e) {
-        console.log('this.stock',this.stock)
         const $input = $(e.target);
         const inputValue =  e.target.value.replace(/[^0-9]/g, "");
         this.setState({ inputValue });
@@ -55,11 +54,19 @@ export default class OrderBulkProductsRow extends React.Component {
         return (
             <div className='order-bulk-product'>
                 <div className='product-name'>{this.props.product.name}</div>
+                <img src={this.props.urlImagesFixed}></img>
                 <img src={this.props.product.defaultImage.url}></img>
                 <div className='product-description'>{this.props.product.description.replace(/<[^>]+>/g, '').substr(0, 300)+'...'}</div>
+                <div className='product-inventory'>
+                
+                {this.props.product.inventory?.aggregated?.availableToSell===undefined || this.props.product.inventory?.aggregated?.availableToSell===0
+                    ? <>0</>
+                    : <>{this.props.product.inventory?.aggregated?.availableToSell}</>
+                }
+                </div>
                 <div className='product-price'>{this.props.product.prices.price.value} {this.props.product.prices.price.currencyCode}</div>
                 <div className='product-count'>
-                    {this.props.product.inventory?.aggregated?.availableToSell===0
+                    {this.props.product.inventory?.aggregated?.availableToSell===undefined || this.props.product.inventory?.aggregated?.availableToSell===0
                         ?
                         <div className='container-out-of-stock'>
                             <div className="alertBox-column alertBox-icon">

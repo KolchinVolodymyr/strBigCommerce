@@ -1,0 +1,21 @@
+{{#partial "page"}}
+{{inject 'storefrontAPIToken' settings.storefront_api.token}}
+<div class="bulk-order-hosted-csv-container">
+    <div class="loadingOverlay" style="display:block;" id="brandsOverlay"></div>
+    <div class="error-registered-users" style="display: none;">
+        <h1 class="page-heading">{{lang 'page.status401'}}</h1>
+        <p class="u-textAlignCenter">
+            {{lang 'page.access_denied'}}
+        </p>
+    </div>
+    <div class="error-show-page" style="display: none;">
+        <h1 class="page-heading">{{lang 'page.status403'}}</h1>
+        <p class="u-textAlignCenter">
+            {{lang 'page.access_denied'}}
+        </p>
+    </div>
+</div>
+
+{{/partial}}
+
+{{> layout/base}}
