@@ -27,7 +27,6 @@
     {{/if}}
 {{/each}}
 </div>
-        <!-- <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script> -->
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
@@ -47,27 +46,4 @@
                 ]
             });
         </script>
-        <script>
-        $( document ).ready(function() {
-            function callPlayer(frame_id, func, args) {
-                if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
-                var iframe = document.getElementById(frame_id);
-                if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
-                    iframe = iframe.getElementsByTagName('iframe')[0];
-                }
-                if (iframe) {
-                    iframe.contentWindow.postMessage(JSON.stringify({'event': 'command','func': func,'args': args || [],'id': frame_id}), '*');
-                }
-            };
-             
-            $('#your-class').on('beforeChange', function(event, slick,currentSlide, nextSlide){
-                let currentSlideEl = slick.$slides[currentSlide];
-                if (currentSlideEl.firstChild !== null && currentSlideEl.firstChild.classList.contains('customCarouselVideo')){
-                    callPlayer(currentSlideEl.firstChild.firstChild.id, 'stopVideo')}
-                });
-            $('#your-class').on('afterChange', function(event, slick,currentSlide, nextSlide){
-                let currentSlideEl = slick.$slides[currentSlide];
-                if (currentSlideEl.firstChild !== null && currentSlideEl.firstChild.classList.contains('customCarouselVideo')){callPlayer(currentSlideEl.firstChild.firstChild.id, 'playVideo');}
-            });
-        });
-        </script>
+       
