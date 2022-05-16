@@ -1,0 +1,24 @@
+query productById(
+    $productId: Int!
+   # Use GraphQL Query Variables to inject your product ID
+) {
+   site {
+     product(entityId: $productId) {
+       id
+       entityId
+       name
+       plainTextDescription
+       metafields(
+            namespace: "recommended products"
+            first: 2
+        ) {
+        edges {
+            node {
+                key
+                id
+                value
+            }
+        }}
+     }
+   }
+}
