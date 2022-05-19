@@ -15,8 +15,7 @@ export default class RecommendedProducts extends PageManager {
         this.productSKUsArray = [];
         this.productsList = [];
         this.$container = $('.recommended-product-block')[0];
-        // this.showPage = null;
-        // this.productVariants = [];
+        this.loading = $('.product-section-slider >.loadingOverlay').show();
     }
     /**
      *
@@ -27,7 +26,9 @@ export default class RecommendedProducts extends PageManager {
             query: getProductsSKU,
             variables: { sku: productSkuItem },
         }).then(res => {
-            this.productsList.push(res.data.site.product);
+            if(res.data.site.product !== null) {
+                this.productsList.push(res.data.site.product);
+            }
         })
     }
 
@@ -53,7 +54,10 @@ export default class RecommendedProducts extends PageManager {
         this.forEachPromise(productSKUs)
             .then(() => {
                 ReactDOM.render(<SliderRecommendedProduct productsList={this.productsList}/>, this.$container)
-            });
+            })
+            .then(()=>{
+                this.loading.hide();
+            })
     }
 
     /**
