@@ -7,6 +7,11 @@ query getProductsSku(
         entityId
         name
         sku
+        path
+        brand {
+          id
+          name
+        }
         description
         plainTextDescription
       	inventory{

@@ -2,6 +2,9 @@ import PageManager from '../page-manager';
 import initApolloClient from '../global/graphql/client';
 import getProductMetafields from './gql/getProductMetafields.gql';
 import getProductsSKU from './gql/getProductsSKU.gql';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import SliderRecommendedProduct from './reactComponent/SliderRecommendedProduct';
 import 'regenerator-runtime/runtime';
 
 
@@ -11,7 +14,7 @@ export default class RecommendedProducts extends PageManager {
         this.gqlClient = initApolloClient(this.context.storefrontAPIToken);
         this.productSKUsArray = [];
         this.productsList = [];
-        // this.$container = $('.bulk-order-container')[0];
+        this.$container = $('.recommended-product-block')[0];
         // this.showPage = null;
         // this.productVariants = [];
     }
@@ -25,12 +28,10 @@ export default class RecommendedProducts extends PageManager {
             variables: { sku: productSkuItem },
         }).then(res => {
             this.productsList.push(res.data.site.product);
-        }).then(()=> {
-            console.log('this.productsList', this.productsList);
         })
     }
 
-    async categoryMetafields() {
+    categoryMetafields() {
         this.gqlClient
         .query({
             query: getProductMetafields,
@@ -40,17 +41,35 @@ export default class RecommendedProducts extends PageManager {
                     this.productSKUsArray.push(...el.node.value.replace(/\s/g, '').split(','))
                 })
             }).then(()=>{
-                this.productSKUsArray.map(el => {
-                    console.log('element', el);
-                    this.productsSKU(el);
-                })
+                this.getProductsData(this.productSKUsArray);
             })
     }
 
+    /**
+     *
+     * @param {Array} productSKUs
+     */
+     getProductsData(productSKUs){
+        this.forEachPromise(productSKUs)
+            .then(() => {
+                ReactDOM.render(<SliderRecommendedProduct productsList={this.productsList}/>, this.$container)
+            });
+    }
+
+    /**
+     *
+     * @param items An array of items.
+     * @returns {Promise}
+    */
+    forEachPromise(items) {
+        return items.reduce(function (promise, item) {
+            return promise.then(function () {
+                return this.productsSKU(item);
+            }.bind(this));
+        }.bind(this), Promise.resolve());
+    }
+
     onReady() {
-        // console.log('this.context', this.context.productId);
-        // console.log('recommernded-product');
         this.categoryMetafields();
-       
     }
 }

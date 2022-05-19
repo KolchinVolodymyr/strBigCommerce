@@ -60,7 +60,35 @@
         order: -1;
     }
 }
-
+.product-section-slider {
+    width: 100%;
+    float: left;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+    z-index: 1;
+}
+.recommended-product-block {
+    display: flex;
+    justify-content: center;
+    .card-custom {
+        width: 20%;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    .card-img-container-item img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
+    // .card-title {
+    //     text-align: center
+    // }
+    .card-text {
+        color: #757575;
+    }
+}
 .productView-description {
     @include grid-column(12);
     padding-left: spacing("base");
