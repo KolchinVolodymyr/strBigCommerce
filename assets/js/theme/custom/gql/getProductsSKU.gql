@@ -7,6 +7,11 @@ query getProductsSku(
         entityId
         name
         sku
+        path
+        brand {
+          id
+          name
+        }
         description
         plainTextDescription
       	inventory{
@@ -21,7 +26,7 @@ query getProductsSku(
             }
         }
         defaultImage {
-          url(width: 100)
+          url(width: 200)
         }
       }
     }
