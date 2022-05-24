@@ -6,29 +6,13 @@ import customerData from './gql/customerData.gql';
 
 export default function (context) {
     let gqlClient = initApolloClient(context.storefrontAPIToken);
-    // fetch('http://localhost:8080/orders').then(function (response) {
-    //     // The API call was successful!
-    //     // return response.text();
-    //     console.log('response', response);
-    //     return response.json();
-    // }).then((data)=> {
-    //     const orderItem = [];
-    //     data.map(el=>{
-    //         if(el.status !== 'Completed') {
-    //             orderItem.push(el);
-    //         }
-    //     }) 
-    //     ReactDOM.render(<OrderHeaderList orderItem={orderItem.length}/>, $('#order-list')[0])
-    // }).catch((err)=>{
-    //     console.log(err);
-    // })
+
     gqlClient.query({
         query: customerData,
     }).then(res => {
         if (res.data.customer === null) {
              console.log('res.data.customer', res.data.customer);
-        } else {
-            console.log('!==res.data.customer', res.data.customer.entityId)
+        } else { 
             fetch('http://localhost:8080/orders', {
                 method: 'POST',
                 headers: {
@@ -51,7 +35,5 @@ export default function (context) {
             })
         }
     })
-
-    // console.log('context', context);
     
 }
