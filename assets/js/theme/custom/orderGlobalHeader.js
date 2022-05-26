@@ -25,8 +25,9 @@ export default function (context) {
             .then((data)=> {
                 const orderItem = [];
                 data.map(el=>{
-                    if(el.status !== 'Completed') {
-                        orderItem.push(el);
+                    if(el.status === 'Declined' || el.status === 'Completed' || el.status === 'Cancelled') {
+                    } else {
+                        orderItem.push(el)
                     }
                 }) 
                 ReactDOM.render(<OrderHeaderList orderItem={orderItem.length}/>, $('#order-list')[0])

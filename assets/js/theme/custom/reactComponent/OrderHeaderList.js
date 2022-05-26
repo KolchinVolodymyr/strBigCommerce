@@ -8,7 +8,7 @@ export default class OrderHeaderList extends React.Component {
     render() {
         if(this.props.orderItem  === 0) {
             <div className="containerDetailProduct">
-                You have {this.props.orderItem} incomplete orders
+                All of your orders were completed
             </div>
         } else {
             return (
